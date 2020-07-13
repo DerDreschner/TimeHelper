@@ -1,0 +1,47 @@
+﻿<Window x:Class="TimeHelper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimeHelper.NetCore"
+        mc:Ignorable="d"
+        Title="Time Helper" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Schließe Anwendung" Click="Button_Click" Grid.Column="3" Grid.Row="7"/>
+        <TextBlock TextWrapping="Wrap" Grid.Column="1" Grid.Row="1" TextAlignment="Center" MinHeight="16" VerticalAlignment="Center" ><Run Text="Zeige Uptime zwischen dem"/></TextBlock>
+        <DatePicker x:Name="pickedDate" Grid.Column="2" Grid.Row="1" MinHeight="24" SelectedDateChanged="PickedDate_Changed" VerticalAlignment="Center" AutomationProperties.IsRequiredForForm="True" />
+        <TextBlock TextWrapping="Wrap" TextAlignment="Center" Grid.Column="3" Grid.Row="1" MinHeight="16" VerticalAlignment="Center"><Run Text="und jetzt"/></TextBlock>
+        <DataGrid x:Name="dailyUptime" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" IsReadOnly="True" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Key, StringFormat=\{0:d\}}" Header="Date" CanUserResize="False" Width="1*"/>
+                <DataGridTextColumn Binding="{Binding Value, StringFormat=\{0:d\\.hh\\:mm\}}" Header="Uptime" CanUserResize="False" Width="1*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="detailedUptime" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" IsReadOnly="True" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding BootupTime, StringFormat=\{0:g\}}" Header="Bootup Time" CanUserResize="False" Width="3*"/>
+                <DataGridTextColumn Binding="{Binding ShutdownTime, StringFormat=\{0:g\}}" Header="Shutdown Time" CanUserResize="False" Width="3*"/>
+                <DataGridTextColumn Binding="{Binding Uptime, StringFormat=\{0:hh\\:mm\}}" Header="Uptime" CanUserResize="False" Width="1.5*"/>
+                <DataGridCheckBoxColumn Binding="{Binding IsCrashed}" Header="Crashed?" CanUserResize="False" Width="1*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

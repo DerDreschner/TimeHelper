@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <PackageId>TimeHelper</PackageId>
+    <Authors>TimeHelper</Authors>
+    <Company>TimeHelper</Company>
+    <Product>TimeHelper</Product>
+    <AssemblyName>TimeHelper</AssemblyName>
+    <RootNamespace>TimeHelper</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Diagnostics.EventLog" Version="4.7.0" />
+  </ItemGroup>
+
+</Project>
